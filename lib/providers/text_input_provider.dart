@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hackathon_sample/network/entity/chat_request.dart';
-import 'package:hackathon_sample/network/entity/chat_response.dart';
 import 'package:hackathon_sample/repository/api_repository.dart';
 
 class AsyncChatNotifier extends AsyncNotifier<String?> {
@@ -26,6 +25,9 @@ class AsyncChatNotifier extends AsyncNotifier<String?> {
     });
   }
 }
+
+// final repositoryProvider =
+//     Provider<ApiRepository>((ref) => ApiRepositoryImpl());
 
 final asyncChatProvider = AsyncNotifierProvider<AsyncChatNotifier, String?>(() {
   return AsyncChatNotifier(ApiRepositoryImpl());

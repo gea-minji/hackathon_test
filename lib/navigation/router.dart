@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hackathon_sample/screen/home_screen.dart';
+import 'package:hackathon_sample/screen/image_input_screen.dart';
 import 'package:hackathon_sample/screen/text_input_screen.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -16,7 +17,11 @@ final routerProvider = Provider<GoRouter>((ref) {
     GoRoute(
         path: '/textInputScreen',
         name: 'textInputScreen',
-        builder: (context, state) => TextInputScreen())
+        builder: (context, state) => TextInputScreen()),
+    GoRoute(
+        path: '/imageInputScreen',
+        name: 'imageInputScreen',
+        builder: (context, state) => const ImageInputScreen())
   ]);
 
   return router;

@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
             height: 50,
             margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             child: ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () => context.goNamed('imageInputScreen'),
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
                 icon: const Icon(Icons.camera_alt, color: Colors.white),
                 label: const Text('CAMERA',

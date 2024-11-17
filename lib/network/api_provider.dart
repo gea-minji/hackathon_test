@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'api_client.dart';
 import 'entity/chat_request.dart';
 import 'entity/chat_response.dart';
@@ -16,11 +17,9 @@ class ApiProvider {
   }
 
   Future<ChatResponse> sendUserPrompt(ChatRequest request) async {
-    const authorizationToken =
-        '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';
     try {
       final response = await _apiClient.postUserPrompt(
-          'Bearer $authorizationToken', request);
+          'Bearer ${dotenv.env['apiKey']}', request);
       return response;
     } catch (e) {
       log('$_tag $e');

@@ -52,7 +52,11 @@ class TextInputScreen extends ConsumerWidget {
                         fontWeight: FontWeight.bold),
                   ))),
           resultState.when(
-              data: (message) => Text(message ?? 'No response from AI'),
+              data: (message) => Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    child: Text(message ?? 'No response from AI'),
+                  ),
               error: (error, stack) => Text('Error: $error'),
               loading: () => const CircularProgressIndicator())
         ],
