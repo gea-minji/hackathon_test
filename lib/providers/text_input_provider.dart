@@ -16,7 +16,7 @@ class AsyncChatNotifier extends AsyncNotifier<String?> {
   Future<void> postUserPrompt(String message) async {
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final request = ChatRequest(model: 'gpt-3.5-turbo', messages: [
+      final request = ChatRequest(model: 'gpt-4o', messages: [
         RequestMessage(role: 'system', content: 'You are a helpful assistant.'),
         RequestMessage(role: 'user', content: message),
       ]);
