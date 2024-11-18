@@ -1,3 +1,5 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../network/api_provider.dart';
 import '../network/entity/chat_request.dart';
 import '../network/entity/chat_response.dart';
@@ -13,3 +15,7 @@ class ApiRepositoryImpl implements ApiRepository {
     return response;
   }
 }
+
+final apiRepositoryProvider = Provider<ApiRepository>((ref) {
+  return ApiRepositoryImpl();
+});

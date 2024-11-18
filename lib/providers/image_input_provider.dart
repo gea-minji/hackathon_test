@@ -56,5 +56,6 @@ class ImageInputProvider extends StateNotifier<ImageState> {
 
 final imageInputProvider =
     StateNotifierProvider<ImageInputProvider, ImageState>((ref) {
-  return ImageInputProvider(ApiRepositoryImpl());
+  final apiRepository = ref.read(apiRepositoryProvider);
+  return ImageInputProvider(apiRepository);
 });

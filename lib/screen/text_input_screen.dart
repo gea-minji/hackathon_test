@@ -9,7 +9,7 @@ class TextInputScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final resultState = ref.watch(asyncChatProvider);
+    final resultState = ref.watch(textInputProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -38,7 +38,7 @@ class TextInputScreen extends ConsumerWidget {
               child: ElevatedButton(
                   onPressed: () {
                     ref
-                        .read(asyncChatProvider.notifier)
+                        .read(textInputProvider.notifier)
                         .postUserPrompt(inputController.text);
                   },
                   style: ButtonStyle(
@@ -51,14 +51,19 @@ class TextInputScreen extends ConsumerWidget {
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ))),
-          resultState.when(
-              data: (message) => Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                    child: Text(message ?? 'No response from AI'),
-                  ),
-              error: (error, stack) => Text('Error: $error'),
-              loading: () => const CircularProgressIndicator())
+          Expanded(
+              child: resultState.when(
+                  data: (message) => Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 5),
+                        child: Text(message ?? 'No response from AI'),
+                      ),
+                  error: (error, stack) => Text('Error: $error'),
+                  loading: () => const Center(
+                      child: SizedBox(
+                          height: 50,
+                          width: 50,
+                          child: CircularProgressIndicator()))))
         ],
       ),
     );
